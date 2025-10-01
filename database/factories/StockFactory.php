@@ -14,7 +14,7 @@ class StockFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_id' => Product::factory(),
+            'product_id' => null,
             'city' => $this->faker->city(),
             'stock' => $this->faker->numberBetween(0, 100),
         ];
