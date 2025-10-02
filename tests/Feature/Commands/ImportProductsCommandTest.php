@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Commands;
 
 use App\Jobs\ImportProductJob;
 use App\Models\Product;
