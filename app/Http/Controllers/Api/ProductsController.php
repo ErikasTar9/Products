@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\IndexRequest;
-use App\Models\Product;
 use App\Services\Api\ProductService;
-use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
