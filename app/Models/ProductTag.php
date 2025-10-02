@@ -14,6 +14,7 @@ class ProductTag extends Model
 
     public $timestamps = false;
 
+    // Fillabale would be better practice here btw
     protected $guarded = [];
 
     public function product(): BelongsTo

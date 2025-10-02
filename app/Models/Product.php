@@ -11,6 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
+    // Fillabale would be better practice here btw
     protected $guarded = [];
 
     protected $casts = [

@@ -10,6 +10,7 @@ class Stock extends Model
 {
     use HasFactory;
 
+    // Fillabale would be better practice here btw
     protected $guarded = [];
 
     public function product(): BelongsTo
