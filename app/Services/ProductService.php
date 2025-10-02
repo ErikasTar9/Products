@@ -32,11 +32,9 @@ final class ProductService
     {
         $key = "product:{$sku}:details";
 
-        return Cache::remember($key, 600, function () use ($sku) {
-            /** @var Product $product */
+        $data = Cache::remember($key, 600, function () use ($sku) {
             $product = Product::query()
                 ->with('tags')
-                ->withSum('stocks as live_stock', 'stock')
                 ->where('sku', $sku)
                 ->firstOrFail();
 
@@ -50,5 +48,9 @@ final class ProductService
 
             return compact('product', 'related');
         });
+
+        $data['product']->loadSum('stocks as live_stock', 'stock');
+
+        return $data;
     }
 }

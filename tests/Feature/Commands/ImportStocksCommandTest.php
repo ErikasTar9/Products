@@ -23,7 +23,7 @@ class ImportStocksCommandTest extends TestCase
             ['sku' => 'KF-BBB', 'stock' => 1, 'city' => 'Vilnius'],
         ];
 
-        Storage::put('public/files/stocks.json', json_encode($rows));
+        Storage::put('files/stocks.json', json_encode($rows));
 
         $this->artisan('import:stocks')
             ->assertExitCode(0);
@@ -36,7 +36,7 @@ class ImportStocksCommandTest extends TestCase
         $rows2 = [
             ['sku' => 'KF-AAA', 'stock' => 12, 'city' => 'Vilnius'],
         ];
-        Storage::put('public/files/stocks.json', json_encode($rows2));
+        Storage::put('files/stocks.json', json_encode($rows2));
         $this->artisan('import:stocks')->assertExitCode(0);
 
         $this->assertEquals(12, Stock::where(['product_id' => $p1->id, 'city' => 'Vilnius'])->value('stock'));
@@ -46,7 +46,7 @@ class ImportStocksCommandTest extends TestCase
     {
         Storage::fake('local');
 
-        $this->artisan('import:stocks public/files/missing.json')
+        $this->artisan('import:stocks files/missing.json')
             ->expectsOutputToContain('File not found')
             ->assertExitCode(1);
     }
@@ -54,7 +54,7 @@ class ImportStocksCommandTest extends TestCase
     public function testImportStocksCommandFailsOnInvalidJsonSyntax(): void
     {
         Storage::fake('local');
-        Storage::put('public/files/stocks.json', '{invalid-json');
+        Storage::put('files/stocks.json', '{invalid-json');
 
         $this->artisan('import:stocks')
             ->expectsOutputToContain('Invalid JSON')

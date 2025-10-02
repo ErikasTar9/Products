@@ -35,7 +35,7 @@ class ImportProductsCommandTest extends TestCase
                 'updated_at' => '2022-01-02',
             ],
         ];
-        Storage::put('public/files/products.json', json_encode($payload));
+        Storage::put('files/products.json', json_encode($payload));
 
         Queue::fake();
 
@@ -76,7 +76,7 @@ class ImportProductsCommandTest extends TestCase
         Storage::fake('local');
         Queue::fake();
 
-        Storage::put('public/files/products.json', '{not-a-valid-json');
+        Storage::put('files/products.json', '{not-a-valid-json');
 
         $this->artisan('import:products')
             ->expectsOutputToContain('Invalid JSON')
