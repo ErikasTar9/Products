@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ImportStocksCommand extends Command
 {
-    protected $signature = 'import:stocks {path=public/files/stocks.json}';
+    protected $signature = 'import:stocks {path=files/stocks.json}';
 
     protected $description = 'Import stocks from JSON file (upsert by product+city)';
 

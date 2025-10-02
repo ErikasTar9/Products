@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 final class ImportProductsCommand extends Command
 {
-    protected $signature = 'import:products {path=public/files/products.json}';
+    protected $signature = 'import:products {path=files/products.json}';
 
     protected $description = 'Import products from JSON file and dispatch jobs to the queue';
 
